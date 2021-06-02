@@ -6,8 +6,7 @@ import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../component
 
 import AppButton from '../components/AppButton';
 
-//NOTE : not sure how to include the picker in Formik and for validation in Yup
-//NOTE : need to make the register button the full width and height of the bottom portion of screen
+//NOTE : need to make the image properly in the centre, cutting the female out atm
 
 const user_types = [
     { label : "Driver", value : 1},
@@ -24,7 +23,8 @@ function WelcomeScreen(props) {
     return (
         <ImageBackground 
             style = {styles.background}
-            source = {require('../assets/Messenger-pana.png')}
+            resizeMode = "cover"
+            source = {require('../assets/FreeShipping-rafiki.png')}
         >
             <View style = {styles.loginContainer}>
                 <AppForm
@@ -53,23 +53,24 @@ function WelcomeScreen(props) {
                         textContentType = "password"
                         secureTextEntry
                         />
-                        <SubmitButton title = "Sign In"/>     
+                        <SubmitButton title = "Sign In" width = "50%" />     
                 </AppForm>
             </View>
-            <AppButton title = "Don't have an account yet?" onPress = {() => console.log("Create new account")}/>    
+            <AppButton title = "Don't have an account yet?" width = "100%" onPress = {() => console.log("Create new account")}/>    
         </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
     background: {
-        flex: 1,
+        height: "88%",
         justifyContent: "flex-end",
         alignItems: "center",
     },
     loginContainer: {
         padding : 20,
         width : "80%",
+        alignItems : "center",
     },
 
 });

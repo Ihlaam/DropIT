@@ -1,6 +1,6 @@
 # DropIT
 
-![alt text](https://github.com/Ihlaam/DropIT/app/assets/icon_solid.png)
+![alt text](https://github.com/Ihlaam/DropIT/blob/main/app/assets/icon_solid.png)
 
 ### Description
 

@@ -24,7 +24,7 @@ function WelcomeScreen(props) {
         <ImageBackground 
             style = {styles.background}
             resizeMode = "cover"
-            source = {require('../assets/FreeShipping-rafiki.png')}
+            source = {require('../assets/Messenger-pana.png')}
         >
             <View style = {styles.loginContainer}>
                 <AppForm
@@ -63,7 +63,7 @@ function WelcomeScreen(props) {
 
 const styles = StyleSheet.create({
     background: {
-        height: "88%",
+        flex: 1,
         justifyContent: "flex-end",
         alignItems: "center",
     },

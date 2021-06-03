@@ -6,8 +6,6 @@ import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../component
 
 import AppButton from '../components/AppButton';
 
-//NOTE : need to make the image properly in the centre, cutting the female out atm
-
 const user_types = [
     { label : "Driver", value : 1},
     { label : "Customer", value : 2},

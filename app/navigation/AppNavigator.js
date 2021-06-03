@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import RequestNavigator from "./RequestNavigator";
-import DeliveryNavigator from "./DeliveryNavigator";
+import OrdersNavigator from "./OrdersNavigator";
 import AccountNavigator from "./AccountNavigator";
 import colours from "../config/colours";
 
@@ -25,16 +25,16 @@ const AppNavigator = () => (
       component={RequestNavigator}
       options={{
         tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="form-select" color={color} size={size} />
+          <MaterialCommunityIcons name="truck-fast" color={color} size={size} />
         ),
       }}
     />
     <Tab.Screen
-      name="Delivery"
-      component={DeliveryNavigator}
+      name="Orders"
+      component={OrdersNavigator}
       options={({ 
         tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="truck-fast" color={color} size={size} />
+          <MaterialCommunityIcons name="form-select" color={color} size={size} />
         ),
       })}
     />

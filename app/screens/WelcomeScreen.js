@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ImageBackground, StyleSheet, View} from 'react-native';
 import * as Yup from 'yup';
 
@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
     user: Yup.object().required().nullable().label("User Type")
   });
   
-function WelcomeScreen(props) {
+function WelcomeScreen(navigation) {
     return (
         <ImageBackground 
             style = {styles.background}
@@ -53,10 +53,10 @@ function WelcomeScreen(props) {
                         textContentType = "password"
                         secureTextEntry
                         />
-                        <SubmitButton title = "Sign In" width = "50%" />     
+                        <SubmitButton title = "Sign In" width = "50%" onPress = {() => navigation.navigate("LoggedIn")} />     
                 </AppForm>
             </View>
-            <AppButton title = "Don't have an account yet?" width = "100%" onPress = {() => console.log("Create new account")}/>    
+            <AppButton title = "Don't have an account yet?" width = "100%" onPress = {() => navigation.navigate("Register")}/>    
         </ImageBackground>
     );
 }

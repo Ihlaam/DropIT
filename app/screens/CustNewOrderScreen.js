@@ -43,7 +43,7 @@ function CustNewOrderScreen(navigation) {
                     keyboardType = "decimal-pad"
                     placeholder = "Height (cm)"     
                 />
-                <SubmitButton title = "Create New Order" width = "80%" onPress = {() => navigation.navigate("CustQuoteScreen")} />  
+                <SubmitButton title = "Create New Order" width = "80%" onPress = {() => navigation.navigate("CustOrderScreen")} />  
                 </AppForm>
             </View>
         </ImageBackground>

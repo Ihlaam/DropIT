@@ -9,5 +9,4 @@ function CustQuoteScreen(props) {
     );
 }
 
-
 export default CustQuoteScreen;

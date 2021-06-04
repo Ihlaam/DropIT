@@ -3,11 +3,10 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
-import CustQuoteScreen from "./app/screens/CustQuoteScreen";
-import WelcomeScreen from "./app/screens/WelcomeScreen";
+import CustAccountScreen from "./app/screens/CustAccountScreen";
 
 export default function App() {
-  return <CustQuoteScreen />
+  return <CustAccountScreen />
     // <NavigationContainer theme={navigationTheme}>
     //   <AppNavigator />  
     // </NavigationContainer>

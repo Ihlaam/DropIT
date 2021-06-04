@@ -2,6 +2,7 @@
 //**Add field for user to upload optional image . does not work currently*/
 import React, { useState, useEffect } from "react";
 import { ImageBackground, StyleSheet, View } from 'react-native';
+import {NavigationContainer, useNavgiation} from "@react-navigation/native";
 import * as Yup from 'yup';
 import ImagePicker from 'expo-image-picker';
 
@@ -14,7 +15,7 @@ const validationSchema = Yup.object().shape({
     height: Yup.object().required().label("Height"),
   });
   
-function CustNewOrderScreen(navigation) {
+function CustCreateOrderScreen(route) {
     const [imageUri, setImageUri] = useState(null);
     const requestPermission = async () => {
         const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -37,6 +38,7 @@ function CustNewOrderScreen(navigation) {
     
     
     return (
+    <Screen>
         <ImageBackground
             style = {styles.background}
             resizeMode = "contain"
@@ -72,8 +74,8 @@ function CustNewOrderScreen(navigation) {
                 <SubmitButton title = "Create New Order" width = "80%" onPress = {() => navigation.navigate("CustOrdersScreen")} />     
             </AppForm>
         </View>
- 
         </ImageBackground>
+    </Screen>
     );
 }
 
@@ -107,4 +109,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default CustNewOrderScreen;
+export default CustCreateOrderScreen;

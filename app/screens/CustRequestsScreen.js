@@ -1,6 +1,8 @@
 //NOTE : Must still integrate with google maps search, need Api key to do
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
+import {NavigationContainer, useNavgiation} from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/stack";
 import * as Yup from "yup";
 import * as Location from 'expo-location';
 
@@ -19,7 +21,7 @@ const validationSchema = Yup.object().shape({
   vehicle: Yup.object().required().nullable().label("Vehicle Type")
 });
 
-function CustRequestsScreen(props) {
+function CustRequestsScreen(navigation) {
         //getting access to location
         const [location, setLocation] = useState(null);
         const [errorMsg, setErrorMsg] = useState(null);
@@ -68,7 +70,7 @@ function CustRequestsScreen(props) {
                     textContentType="location"
                 />
                 <AppFormPicker items={vehicle_types} name = "vehicles" placeholder = "Vehicle Type" AppFormPicker/>
-                <SubmitButton title = "Next" width = "70%" onPress = {() => navigation.navigate("CustCreateOrderScreen")} />     
+                <SubmitButton title = "Next" width = "70%" onPress = {() => navigation.navigate("CreateOrder")} />     
                 </AppForm>
             </Screen>
         );

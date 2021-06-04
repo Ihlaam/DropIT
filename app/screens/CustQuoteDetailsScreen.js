@@ -1,13 +1,10 @@
-//NOTE: A list of all orders, those complete at the bottom and those to be responded to above
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 
 import AppText from "../components/AppText";
+import AppButton from "../components/AppButton";
 import ListItem from "../components/ListItem";
 import colors from "../config/colours";
-
-//NOTE: If on previous orders screen a swipe to the right should be yellow and take you to feedback 
-//NOTW: If on quotes screen a swipe to right will be to accept quote and swipe to left to reject quote
 
 function CustOrderScreen(props) {
   return (
@@ -23,6 +20,8 @@ function CustOrderScreen(props) {
             subTitle="Toyota Avanza"
             />
         </View>
+        <AppButton title = "Accept" width = "100%" />    
+        <AppButton title = "Reject" width = "100%" />    
       </View>
     </View>
   );

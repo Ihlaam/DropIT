@@ -68,7 +68,7 @@ function CustRequestsScreen(props) {
                     textContentType="location"
                 />
                 <AppFormPicker items={vehicle_types} name = "vehicles" placeholder = "Vehicle Type" AppFormPicker/>
-                <SubmitButton title = "Next" width = "70%" onPress = {() => navigation.navigate("CustNewOrderScreen")} />     
+                <SubmitButton title = "Next" width = "70%" onPress = {() => navigation.navigate("CustCreateOrderScreen")} />     
                 </AppForm>
             </Screen>
         );

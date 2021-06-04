@@ -2,8 +2,8 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import CustRequestsScreen from "../screens/CustRequestsScreen";
-import CustQuoteScreen from "../screens/CustQuoteScreen";
-import CustNewOrderScreen from "../screens/CustNewOrderScreen";
+import CustQuoteDetailsScreen from "../screens/CustQuoteDetailsScreen";
+import CustCreateOrderScreen from "../screens/CustCreateOrderScreen";
 import CustTrackingScreen from "../screens/CustTrackingScreen";
 import CustDeliveryInfoScreen from "../screens/CustDeliveryInfoScreen";
 
@@ -14,8 +14,8 @@ const Stack = createStackNavigator();
 const RequestNavigator = () => (
   <Stack.Navigator >
     <Stack.Screen name="Requests" component={CustRequestsScreen} /> 
-    <Stack.Screen name="Quoting" component={CustQuoteScreen} />
-    <Stack.Screen name="NewOrder" component={CustNewOrderScreen} />
+    <Stack.Screen name="Quoting" component={CustQuoteDetailsScreen} />
+    <Stack.Screen name="CreateOrder" component={CustCreateOrderScreen} />
     <Stack.Screen name="Track" component={CustTrackingScreen} />
     <Stack.Screen name="DeliveryInfo" component={CustDeliveryInfoScreen} />
   </Stack.Navigator>

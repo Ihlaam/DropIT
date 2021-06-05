@@ -21,10 +21,15 @@ const validationSchema = Yup.object().shape({
   vehicle: Yup.object().required().nullable().label("Vehicle Type")
 });
 
-function CustRequestsScreen(navigation) {
+function CustRequestsScreen({navigation}) {
         //getting access to location
         const [location, setLocation] = useState(null);
         const [errorMsg, setErrorMsg] = useState(null);
+
+        const handleSubmit = (values) => {
+            console.log(values);
+            navigation.navigate("CreateOrder");
+        }
 
         useEffect(() => {
             (async () => {
@@ -48,29 +53,30 @@ function CustRequestsScreen(navigation) {
         //
         return (
             <Screen style={styles.container}>
+                
                 <AppForm
                     initialValues={{ pickup: "", dropoff: "" , vehicle: null}}
-                    onSubmit={(values) => console.log(values)}
+                    onSubmit={handleSubmit}
                     validationSchema={validationSchema}
                 >
-                <AppFormField
-                    name="pickup"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    autoCompleteType="street-address"   
-                    placeholder="Pickup Location"
-                    textContentType="location"
-                />
-                <AppFormField
-                    name="dropoff"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    autoCompleteType="street-address"   
-                    placeholder="Dropoff Location"
-                    textContentType="location"
-                />
-                <AppFormPicker items={vehicle_types} name = "vehicles" placeholder = "Vehicle Type" AppFormPicker/>
-                <SubmitButton title = "Next" width = "70%" onPress = {() => navigation.navigate("CreateOrder")} />     
+                    <AppFormField
+                        name="pickup"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        autoCompleteType="street-address"   
+                        placeholder="Pickup Location"
+                        textContentType="location"
+                    />
+                    <AppFormField
+                        name="dropoff"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        autoCompleteType="street-address"   
+                        placeholder="Dropoff Location"
+                        textContentType="location"
+                    />
+                    <AppFormPicker items={vehicle_types} name = "vehicle" placeholder = "Vehicle Type" AppFormPicker/>
+                    <SubmitButton title = "Next" width = "70%" />     
                 </AppForm>
             </Screen>
         );

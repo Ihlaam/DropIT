@@ -8,6 +8,7 @@ import ImagePicker from 'expo-image-picker';
 
 import AppButton from "../components/AppButton";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
     width: Yup.string().required().label("Width"),

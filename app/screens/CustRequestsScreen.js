@@ -55,7 +55,7 @@ function CustRequestsScreen({navigation}) {
             <Screen style={styles.container}>
                 
                 <AppForm
-                    initialValues={{ pickup: "", dropoff: "" , vehicle: null}}
+                    initialValues={{ pickup: "p", dropoff: "d" , vehicle: {label:'Car',value:2}}}
                     onSubmit={handleSubmit}
                     validationSchema={validationSchema}
                 >

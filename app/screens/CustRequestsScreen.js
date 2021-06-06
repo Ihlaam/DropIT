@@ -29,8 +29,9 @@ function CustRequestsScreen({navigation}) {
         const [errorMsg, setErrorMsg] = useState(null);
 
         const handleSubmit = (values) => {
-            console.log(values);
-            // navigation.navigate("CreateOrder");
+            navigation.navigate("CreateOrder",{
+                ...values
+            });
         }
 
         useEffect(() => {

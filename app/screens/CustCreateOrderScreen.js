@@ -68,17 +68,14 @@ function CustCreateOrderScreen({route,navigation}) {
                             <AppFormField
                                 name = "width"
                                 autoCorrect = {false}
-                                keyboardType = "decimal-pad"
                                 placeholder = "Width (cm)"/>
                             <AppFormField
                                 name = "length"
                                 autoCorrect = {false}
-                                keyboardType = "decimal-pad"
                                 placeholder = "Length (cm)"/>
                             <AppFormField
                                 name = "height"
                                 autoCorrect = {false}
-                                keyboardType = "decimal-pad"
                                 placeholder = "Height (cm)"/>
                 </View>
                 <View style={styles.imageContainer}>

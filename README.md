@@ -21,3 +21,8 @@ interaction.
 
 ### Project management tool
 - Trello - https://trello.com/b/fCNYr5Lw
+
+
+### Environment variables
+- create .env file in root  
+- Add GOOGLE_MAPS_API_KEY={YOUR_API_KEY} for google maps services

@@ -4,10 +4,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
+// Import Routes
 const user = require('./routes/user');
-const users = require('./routes/users');
-const order = require('./routes/order');
 const orders = require('./routes/orders');
+const driver = require('./routes/driver');
+
+// Run Tasks
+require('./tasks/driver');
 
 dotenv.config();
 
@@ -20,10 +23,9 @@ mongoose
 app.use(express.json())
 app.use(cors())
 
-app.use('/api/user', user)
-// app.use('/api/users', users)
-// app.use('/api/order', order)
+app.use('/api/users', user)
 app.use('/api/orders', orders)
+app.use('/api/driver', driver)
 
 const port = process.env.PORT || 4000;
 

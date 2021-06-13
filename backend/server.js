@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
+// Import Routes
 const user = require('./routes/user');
 const orders = require('./routes/orders');
+const driver = require('./routes/driver');
 
 dotenv.config();
 
@@ -20,6 +22,7 @@ app.use(cors())
 
 app.use('/api/users', user)
 app.use('/api/orders', orders)
+app.use('/api/driver', driver)
 
 const port = process.env.PORT || 4000;
 

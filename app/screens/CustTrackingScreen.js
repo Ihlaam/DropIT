@@ -3,8 +3,9 @@ import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { Ionicons } from "@expo/vector-icons";
 import MapView from 'react-native-maps';
-import {Marker} from 'react-native-maps';
+import {Marker } from 'react-native-maps';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const imageURL='https://i0.wp.com/www.dailycal.org/assets/uploads/2021/04/package_gusler_cc-900x580.jpg';
 const profileImg='https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png';
@@ -19,10 +20,7 @@ const destination = {
 }
 
 function CustDeliveryScreen() {
-    const [state,setState] = useState({
-        latitude:0,
-        longitude:0,
-    });
+    const [driverLocation, setDriverLocation] = useState();
 
     const renderContent = () => (
         <View
@@ -58,22 +56,36 @@ function CustDeliveryScreen() {
     );
 
     const sheetRef = React.useRef(null);
+    const mapRef = React.useRef(null);
+
+    useEffect(() => {
+        let coords = {
+            latitude:-33.976,
+            longitude:25.47,
+        }
+        setDriverLocation(coords);
+        mapRef.current.animateCamera({center:coords,zoom:14})
+    },[]);
 
     return (
         <>
             <View style={styles.container}>
-                <MapView style={styles.map}>
-                    <Marker
-                        coordinate={{
-                            latitude: state.latitude,
-                            longitude: state.longitude
-                        }}
-                    />
-                    <Marker
+                <MapView 
+                    style={styles.map}
+                    ref={mapRef}
+                >
+                    {driverLocation ? <Marker
                         key={0}
+                        coordinate={driverLocation}
+                        title={"Driver"}
+                        image={require('../assets/map_driver.png')}
+                    /> : null}
+                    <Marker
+                        key={1}
                         coordinate={destination.coordinate}
                         title={destination.title}
                         description={destination.description}
+                        image={require('../assets/map_destination.png')}
                     />
                 </MapView>
             </View>

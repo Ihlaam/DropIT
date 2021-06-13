@@ -9,6 +9,9 @@ const user = require('./routes/user');
 const orders = require('./routes/orders');
 const driver = require('./routes/driver');
 
+// Run Tasks
+require('./tasks/driver');
+
 dotenv.config();
 
 // Connect to Mongo

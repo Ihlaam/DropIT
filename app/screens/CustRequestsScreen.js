@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import {NavigationContainer, useNavigation} from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/stack";
 import * as Yup from "yup";
 import * as Location from 'expo-location';
 

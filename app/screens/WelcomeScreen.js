@@ -1,16 +1,10 @@
-import React, {useState} from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text, TouchableNativeFeedback} from 'react-native';
-import { Formik } from 'formik';
+import React from 'react';
+import { ImageBackground, StyleSheet, View} from 'react-native';
 import * as Yup from 'yup';
 
-
-import ErrorMessage from "../components/ErrorMessage";
-import AppButton from "../components/AppButton";
-import AppPicker from "../components/AppPicker";
-import AppTextInput from "../components/AppTextInput";
-import AppText from "../components/AppText";
-
-//NOTE : not sure how to include the picker in Formik and for validation in Yup
+import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../components/forms";
+import Screen from "../components/Screen";
+import AppButton from '../components/AppButton';
 
 const user_types = [
     { label : "Driver", value : 1},
@@ -20,30 +14,33 @@ const user_types = [
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
+    user: Yup.object().required().nullable().label("User Type")
   });
   
+function WelcomeScreen({navigation}) {
 
+    const handleLogin = async (values) => {
+        navigation.navigate("Requests",{
+            ...values
+        });
+    }
 
-function WelcomeScreen(props) {
-
-    const [user_type, set_user_type] = useState();
     return (
+    <Screen>
         <ImageBackground 
             style = {styles.background}
-            source = {require('../assets/Messenger-pana.png')}
+            resizeMode = "contain"
+            source = {require('../assets/delivery_man.png')}
         >
             <View style = {styles.loginContainer}>
-                <Formik
-                    initialValues={{ user_type: "", email: "", password: "" }}
-                    onSubmit={(values) => console.log(values)}
+                <AppForm
+                    initialValues={{ user: null, email: "", password: "" }}
+                    onSubmit={handleLogin}
                     validationSchema={validationSchema}
                 >
-                    {({handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
-                     <>
-                        <AppPicker 
-                        selectedItem = {user_type}
-                        onSelectItem = {item => set_user_type(item)}
+                  <AppFormPicker 
                         items = {user_types}
+                        name = "user"
                         placeholder = "Driver/Customer" 
                         />
                         <AppFormField
@@ -62,28 +59,32 @@ function WelcomeScreen(props) {
                         textContentType = "password"
                         secureTextEntry
                         />
-                        <AppButton title = "Sign In" onPress = {handleSubmit} />
-                     </>   
-                    )}
-                </Formik>
+                        <SubmitButton title = "Sign In" width = "50%" />     
+                </AppForm>
             </View>
-            <AppButton title = "Don't have an account yet?" onPress = {() => console.log("Create new user")} borderRadius = "1"/>
+            <AppButton title = "Don't have an account yet?" style={styles.registerButton} onPress = {() => {navigation.navigate("Register")}}/>    
         </ImageBackground>
+    </Screen>
     );
 }
 
 const styles = StyleSheet.create({
     background: {
-        flex : 1,
-        justifyContent : "flex-end",
-        alignItems : "center",
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "center",
     },
     loginContainer: {
-        position : "absolute",
-        top : 500,
+        padding : 5,
         width : "80%",
         alignItems : "center",
     },
+    registerButton: {
+        padding : 5,
+        width : "200%",
+        alignItems : "center",
+    },
+
 });
 
 

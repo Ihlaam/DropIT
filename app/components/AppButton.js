@@ -12,8 +12,6 @@ function AppButton({ title, onPress, color = "primary", width = "100%"}) {
     <TouchableOpacity
       style={[styles.button, { backgroundColor: colors[color] }, {width} ]}
       onPress={onPress}
-      width = {width}
-      borderRadius = {borderRadius}
     >
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>

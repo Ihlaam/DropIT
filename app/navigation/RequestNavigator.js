@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 const RequestNavigator = () => (
   <Stack.Navigator 
     screenOptions={{ 
-      headerStyle: { backgroundColor: colors.white},
+      headerStyle: { backgroundColor: colors.primary},
       headerTintColor: colors.secondary,
     }}
   > 

@@ -1,12 +1,13 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
+import {NavigationContainer, useNavigation} from "@react-navigation/native";
 
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
 import ListItem from "../components/ListItem";
 import colors from "../config/colours";
 
-function CustOrderScreen(props) {
+function CustOrderScreen(navigation) {
   return (
     <View>
       <Image style={styles.image} source={require("../assets/package1.jpg")} />
@@ -20,8 +21,8 @@ function CustOrderScreen(props) {
             subTitle="Toyota Avanza"
             />
         </View>
-        <AppButton title = "Accept" width = "100%" />    
-        <AppButton title = "Reject" width = "100%" />    
+        <AppButton title = "Accept" width = "100%" onPress = {() => {navigation.navigate("TrackDelivery")}} />    
+        <AppButton title = "Reject" width = "100%" onPress = {() => {navigation.navigate("QuoteList")}} />    
       </View>
     </View>
   );

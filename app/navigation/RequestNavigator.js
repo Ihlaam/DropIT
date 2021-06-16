@@ -2,9 +2,8 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import CustRequestsScreen from "../screens/CustRequestsScreen";
-import CustOrderDetailsScreen from "../screens/CustOrderDetailsScreen";
+import CustRequestListScreen from "../screens/CustRequestListScreen";
 import CustCreateOrderScreen from "../screens/CustCreateOrderScreen";
-import CustTrackingScreen from "../screens/CustTrackingScreen";
 import colors from "../config/colours";
 
 //NOTE : Home screen, where user can create a new request 
@@ -19,9 +18,8 @@ const RequestNavigator = () => (
     }}
   > 
   <Stack.Screen name="Requests" component={CustRequestsScreen}  />
-  <Stack.Screen name="OrderDetails" component={CustOrderDetailsScreen} />
+  <Stack.Screen name="RequestList" component={CustRequestListScreen} />
   <Stack.Screen name="CreateOrder" component={CustCreateOrderScreen} />
-  <Stack.Screen name="Track" component={CustTrackingScreen} />
   </Stack.Navigator>
 );
 

@@ -83,7 +83,9 @@ function CustCreateOrderScreen({route,navigation}) {
                 </View>
                 <View style={styles.imageContainer}>
                     <AppButton title="Select an image from camera roll" onPress={pickImage} />
-                    {imageUri && <Image source={{ uri: imageUri }} style={{ width: 100, height: 100 }} />}
+                    {imageUri && <Image source={{ uri: imageUri }} 
+                    style={{ width: 100, height: 100 }} 
+                    onPress = {() => {navigation.navigate("RequestList")}} />}
                 </View>
                 <View styles={styles.buttonContainer}>
                         <SubmitButton title = "Create New Order" width = "80%" />

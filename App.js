@@ -1,17 +1,13 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import CustCreateOrderScreen from "./app/screens/CustCreateOrderScreen";
-
-import navigationTheme from "./app/navigation/navigationTheme";
-import AppNavigator from "./app/navigation/AppNavigator";
+import CustQuoteDetailsScreen from "./app/screens/CustQuoteDetailsScreen";
 
 export default function App() {
-  
-  return(
-    <NavigationContainer theme={navigationTheme}>
-      <AppNavigator />  
-    </NavigationContainer>
-  );
+  return <CustQuoteDetailsScreen/>;
+  //   <NavigationContainer theme={navigationTheme}>
+  //     <AppNavigator />  
+  //   </NavigationContainer>
+  // );
+
 }
 
 

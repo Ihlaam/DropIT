@@ -1,6 +1,5 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View} from 'react-native';
-import {NavigationContainer, useNavigation} from "@react-navigation/native";
 import * as Yup from 'yup';
 
 import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../components/forms";
@@ -19,12 +18,6 @@ const validationSchema = Yup.object().shape({
   });
   
 function WelcomeScreen(navigation) {
-
-    const handleSubmit = async (values) => {
-        navigation.navigate("Requests",{
-            ...values
-        });
-    }
     return (
     <Screen>
         <ImageBackground 
@@ -35,7 +28,7 @@ function WelcomeScreen(navigation) {
             <View style = {styles.loginContainer}>
                 <AppForm
                     initialValues={{ user: null, email: "", password: "" }}
-                    onSubmit={handleSubmit}
+                    onSubmit={(values) => console.log(values)}
                     validationSchema={validationSchema}
                 >
                   <AppFormPicker 
@@ -59,7 +52,7 @@ function WelcomeScreen(navigation) {
                         textContentType = "password"
                         secureTextEntry
                         />
-                        <SubmitButton title = "Sign In" width = "50%"/>     
+                        <SubmitButton title = "Sign In" width = "50%" onPress = {() => navigation.navigate("LoggedIn")} />     
                 </AppForm>
             </View>
             <AppButton title = "Don't have an account yet?" width = "100%" onPress = {() => navigation.navigate("Register")}/>    

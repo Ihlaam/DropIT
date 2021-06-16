@@ -47,7 +47,7 @@ function CustDeliveryScreen() {
                 </View>
                 <View style={styles.driver}>
                     <Ionicons style={{padding:2,marginRight:5}} name="md-logo-dropbox"/>
-                    <Text>20cmx10cmx40cm</Text>
+                    <Text>Width: 20cm; Height: 10cm; length: 40cm</Text>
                 </View>
                 <Image source={{uri:imageURL}} style={styles.image}/>
             </View>

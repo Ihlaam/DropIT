@@ -9,7 +9,12 @@ const Stack = createStackNavigator();
 
 const StartNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false}} />
+    <Stack.Screen
+      name="Welcome"
+      component={WelcomeScreen}
+      options={{ 
+          headerShown: false}}     
+    />
     <Stack.Screen name="Requests" component={CustRequestsScreen} />
     <Stack.Screen name="Register" component={RegisterScreen} />
   </Stack.Navigator>

@@ -20,6 +20,8 @@ const validationSchema = Yup.object().shape({
 function CustCreateOrderScreen({route,navigation}) {
     const [imageUri, setImageUri] = useState(null);
 
+
+    
     const requestPermission = async () => {
         const {status} = await ImagePicker.requestCameraPermissionsAsync();
           if (status !== 'granted'){
@@ -41,20 +43,25 @@ function CustCreateOrderScreen({route,navigation}) {
         }
     }
 
-    const handleSubmit = async (request) => {
-        // if (!imageUri){
-        //     return alert("Please select an image");
-        // }
-        const result =  await requestApi.addRequest({
-            ...request,
-            ...route.params,
-        })
-        if (!result.ok)
-            return alert ("Could not save the request");
-            alert ("Success");
+    // const handleSubmit = async (request) => {
+    //     // if (!imageUri){
+    //     //     return alert("Please select an image");
+    //     // }
+    //     const result =  await requestApi.addRequest({
+    //         ...request,
+    //         ...route.params,
+    //     })
+    //     if (!result.ok)
+    //         return alert ("Could not save the request");
+    //         alert ("Success");
+    // }
+    
+const handleSubmit = async (values) => {
+        navigation.navigate("Orders",{
+            ...values
+        });
     }
-    
-    
+
     return (
     <Screen>
         <AppForm
@@ -64,7 +71,7 @@ function CustCreateOrderScreen({route,navigation}) {
             <ImageBackground
                 style = {styles.background}
                 resizeMode = "contain"
-                source = {require('../assets/FreeShipping-rafiki.png')}
+                source = {require('../assets/send_gift.png')}
                 >
                 <View style = {styles.dimensionsContainer}>
                             <AppFormField
@@ -87,7 +94,7 @@ function CustCreateOrderScreen({route,navigation}) {
                     onPress = {() => {navigation.navigate("RequestList")}} />}
                 </View>
                 <View styles={styles.buttonContainer}>
-                        <SubmitButton title = "Create New Order" width = "80%" />
+                        <SubmitButton title = "Create New Order" width = "80%" onPress = {() => {navigation.navigate("OrderListScreen")}}/>
                 </View>
             </ImageBackground>
         </AppForm>

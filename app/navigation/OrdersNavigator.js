@@ -1,31 +1,25 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import navigationTheme from "./app/navigation/navigationTheme";
+
+import CustOrderListScreen from "../screens/CustOrderListScreen";
+import CustOrderDetailsScreen from "../screens/CustOrderDetailsScreen";
+import CustTrackingScreen from "../screens/CustTrackingScreen";
+
 import colors from "../config/colours";
 
-import CustRequestListScreen from "../screens/CustRequestListScreen";
-import CustQuoteListScreen from "../screens/CustQuoteListScreen";
-import CustQuoteDetailsScreen from "../screens/CustQuoteDetailsScreen";
-import CustTrackingScreen from "../screens/CustTrackingScreen";
 
 const Stack = createStackNavigator();
 
-function OrdersNavigator() {
-  return(
-    <NavigationContainer theme={navigationTheme}>
-      <Stack.Navigator initialRouteName="RequestList"
-        screenOptions={{
-           headerStyle: { backgroundColor: colors.primary}, 
-           headerTintColor: colors.secondary,
-           }}
-      > 
-        <Stack.Screen name="RequestList" component={CustRequestListScreen} options={{title: "List of Requests"}}/> 
-        <Stack.Screen name="QuoteList" component={CustQuoteListScreen} options={{title: "List of Quotes"}}/> 
-        <Stack.Screen name="QuoteDetails" component={CustQuoteDetailsScreen} options={{title: "Quote Details"}} /> 
-        <Stack.Screen name="TrackDelivery" component={CustTrackingScreen} options={{title: "Track Driver"}}/>
-        </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+const OrdersNavigator = () => (
+  <Stack.Navigator 
+    screenOptions={{ 
+      headerStyle: { backgroundColor: colors.primary},
+      headerTintColor: colors.secondary,}}
+  > 
+  <Stack.Screen name="Orders" component={CustOrderListScreen} options={{headerLeft: null}}/> 
+  <Stack.Screen name="OrderDetails" component={CustOrderDetailsScreen} /> 
+  <Stack.Screen name="Track" component={CustTrackingScreen} />
+  </Stack.Navigator>
+);
+
 export default OrdersNavigator;

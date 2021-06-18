@@ -1,16 +1,32 @@
 import React from "react";
-import  CustQuoteDetailsScreen from "./app/screens/CustQuoteDetailsScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function App() {
-  return <CustQuoteDetailsScreen/>;
-  //   <NavigationContainer theme={navigationTheme}>
-  //     <AppNavigator />  
-  //   </NavigationContainer>
-  // );
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
+import RegisterScreen from "./app/screens/RegisterScreen";
+import colors from "./app/config/colours";
+import CustRequestsScreen from "./app/screens/CustRequestsScreen";
 
+const Stack = createStackNavigator();
+
+function App() {
+    
+  return(
+    <NavigationContainer theme={navigationTheme}>
+        <Stack.Navigator
+            screenOptions={{ 
+              headerStyle: { backgroundColor: colors.primary},
+              headerTintColor: colors.secondary,
+            }}
+        >
+          <Stack.Screen name="Welcome" component={WelcomeScreen}  />
+          <Stack.Screen name="Requests" component={AppNavigator} options={{headerShown: false}}/>
+          <Stack.Screen name="Register" component={RegisterScreen} />
+        </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
-
-//StartNavigator is for welcome/login/register screens
-//AppNavigator is for customer home/account/delivery screens
-
+export default App;

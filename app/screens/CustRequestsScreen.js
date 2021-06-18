@@ -1,14 +1,13 @@
 //NOTE : Must still integrate with google maps search, need Api key to do
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
-import {NavigationContainer, useNavigation} from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/stack";
 import * as Yup from "yup";
 import * as Location from 'expo-location';
 
 import Screen from "../components/Screen";
-import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../components/forms";
+import { AppForm, AppFormPicker, SubmitButton } from "../components/forms";
 import AppFormLocation from "../components/forms/AppFormLocation";
+import ImageBackground from "react-native/Libraries/Image/ImageBackground";
 
 
 const vehicle_types = [
@@ -56,34 +55,32 @@ function CustRequestsScreen({navigation}) {
         }
         
         return (
-            <Screen style={styles.container}>
-                
+            <Screen>                
                 <AppForm
                     initialValues={{ pickup: null, dropoff: null , vehicle: null}}
                     onSubmit={handleSubmit}
-                    validationSchema={validationSchema}
-                >
-                    <AppFormLocation
-                        label="Pickup Location"
-                        name="pickup"
-                        placeholder="Pickup Location"
-                    />
-                    <AppFormLocation
-                        label="Dropoff Location"
-                        name="dropoff"
-                        placeholder="Dropoff Location"
-                    />
-
-                    <AppFormPicker items={vehicle_types} name = "vehicle" placeholder = "Vehicle Type" AppFormPicker/>
-                    <AppFormField
-                                name = "username"
-                                autoCorrect = {false}
-                                placeholder = "Username"/>
-                    <AppFormField
-                                name = "password"
-                                autoCorrect = {false}
-                                placeholder = "Password (cm)"/>
-                    <SubmitButton title = "Next" width = "70%"/>     
+                    validationSchema={validationSchema}>
+                <ImageBackground
+                    style = {styles.background}
+                    resizeMode = "contain"
+                    source = {require('../assets/takeaway.png')}>
+                    <View style = {styles.container}>
+                        <AppFormLocation
+                            label="Pickup Location"
+                            name="pickup"
+                            placeholder="Pickup Location"/>
+                        <AppFormLocation
+                            label="Dropoff Location"
+                            name="dropoff"
+                            placeholder="Dropoff Location"/>
+                    </View>
+                    <View style={styles.picker}>
+                        <AppFormPicker items={vehicle_types} name = "vehicle" placeholder = "Vehicle Type" AppFormPicker/>
+                    </View>
+                    <View styles={styles.buttonContainer}>
+                        <SubmitButton title = "Continue" width = "100%" />
+                    </View> 
+                </ImageBackground>
                 </AppForm>
             </Screen>
         );
@@ -91,22 +88,30 @@ function CustRequestsScreen({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    width: "90%",
-    alignItems: "center",
-    alignContent: "center",
-  },
-  logo: {
-    width: 80,
-    height: 80,
-    alignSelf: "center",
-    marginTop: 50,
-    marginBottom: 20,
+    position: "absolute",
+    top: 0,
+    padding: 20,
+    width : "90%",
+    alignItems : "center",
+    justifyContent : "center",
+    position: "absolute",
   },
   picker: {
       position: "absolute",
-      bottom: 20,
+      bottom: 100,
+      width : "70%"
   },
+  background: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+ },
+ buttonContainer: {
+    position: "absolute",
+    bottom: 20,
+    alignItems: 'center', 
+    justifyContent: 'center',
+}
 });
 
 export default CustRequestsScreen;

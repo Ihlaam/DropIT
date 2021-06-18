@@ -1,30 +1,31 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
 
+
+import navigationTheme from "./navigationTheme";
 import CustRequestsScreen from "../screens/CustRequestsScreen";
-import CustRequestListScreen from "../screens/CustRequestListScreen";
 import CustCreateOrderScreen from "../screens/CustCreateOrderScreen";
 import colors from "../config/colours";
+import OrdersNavigator from "./OrdersNavigator";
+import CustOrderListScreen from "../screens/CustOrderListScreen";
 
 //NOTE : Home screen, where user can create a new request 
 
 const Stack = createStackNavigator();
 
-function RequestNavigator() {
-  return(
-  <NavigationContainer theme={navigationTheme}>
-    <Stack.Navigator 
-      screenOptions={{ 
-        headerStyle: { backgroundColor: colors.primary},
-        headerTintColor: colors.secondary,
-      }}
-    > 
-    <Stack.Screen name="Requests" component={CustRequestsScreen}  options={{headerShown: false}}/>
-    <Stack.Screen name="RequestList" component={CustRequestListScreen} options={{title: "List of Requests"}}/>
-    <Stack.Screen name="CreateOrder" component={CustCreateOrderScreen} options={{headerShown: false}} />
-    </Stack.Navigator>
-  </NavigationContainer>
+const RequestNavigator = () => (
+      <Stack.Navigator 
+        screenOptions={{ 
+          headerStyle: { backgroundColor: colors.primary},
+          headerTintColor: colors.secondary,
+        }}
+      > 
+      <Stack.Screen name="Requests" component={CustRequestsScreen} options={{headerLeft: null, headerTitle: "Request"}} />
+      <Stack.Screen name="CreateOrder" component={CustCreateOrderScreen} options={{headerTitle: "Create Order"}}/>
+      <Stack.Screen name="Orders" component={CustOrderListScreen} options={{headerLeft: null}}/>
+      </Stack.Navigator>
 
 );
-    }
+
 export default RequestNavigator;

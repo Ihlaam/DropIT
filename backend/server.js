@@ -23,7 +23,8 @@ mongoose
 app.use(express.json())
 app.use(cors())
 
-app.use('/api/users', user)
+app.use('/api/user', user)
+
 app.use('/api/orders', orders)
 app.use('/api/driver', driver)
 

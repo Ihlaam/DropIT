@@ -10,17 +10,21 @@ import colors from "../config/colours";
 
 const Stack = createStackNavigator();
 
-const RequestNavigator = () => (
-  <Stack.Navigator 
-    screenOptions={{ 
-      headerStyle: { backgroundColor: colors.primary},
-      headerTintColor: colors.secondary,
-    }}
-  > 
-  <Stack.Screen name="Requests" component={CustRequestsScreen}  />
-  <Stack.Screen name="RequestList" component={CustRequestListScreen} />
-  <Stack.Screen name="CreateOrder" component={CustCreateOrderScreen} />
-  </Stack.Navigator>
-);
+function RequestNavigator() {
+  return(
+  <NavigationContainer theme={navigationTheme}>
+    <Stack.Navigator 
+      screenOptions={{ 
+        headerStyle: { backgroundColor: colors.primary},
+        headerTintColor: colors.secondary,
+      }}
+    > 
+    <Stack.Screen name="Requests" component={CustRequestsScreen}  options={{headerShown: false}}/>
+    <Stack.Screen name="RequestList" component={CustRequestListScreen} options={{title: "List of Requests"}}/>
+    <Stack.Screen name="CreateOrder" component={CustCreateOrderScreen} options={{headerShown: false}} />
+    </Stack.Navigator>
+  </NavigationContainer>
 
+);
+    }
 export default RequestNavigator;

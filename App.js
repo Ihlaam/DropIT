@@ -1,5 +1,5 @@
 import React from "react";
-import CustQuoteDetailsScreen from "./app/screens/CustQuoteDetailsScreen";
+import  CustQuoteDetailsScreen from "./app/screens/CustQuoteDetailsScreen";
 
 export default function App() {
   return <CustQuoteDetailsScreen/>;

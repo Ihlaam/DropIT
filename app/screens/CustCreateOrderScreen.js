@@ -18,7 +18,6 @@ const validationSchema = Yup.object().shape({
   });
   
 function CustCreateOrderScreen({route,navigation}) {
-    const {pickup,dropoff,vehicle} = route.params;
     const [imageUri, setImageUri] = useState(null);
 
     const requestPermission = async () => {

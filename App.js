@@ -20,7 +20,7 @@ function App() {
               headerTintColor: colors.secondary,
             }}
         >
-          <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/>
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Requests" component={AppNavigator} options={{headerShown: false}}/>
           <Stack.Screen name="Register" component={RegisterScreen} />
         </Stack.Navigator>

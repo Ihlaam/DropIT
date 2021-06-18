@@ -29,7 +29,7 @@ function WelcomeScreen({navigation}) {
     <Screen>
         <ImageBackground 
             style = {styles.background}
-            resizeMode = "contain"
+            resizeMode = "cover"
             source = {require('../assets/delivery_man.png')}
         >
             <View style = {styles.loginContainer}>

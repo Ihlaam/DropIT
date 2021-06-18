@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
         alignItems: "center",
     },
+    text: {
+        flex: 1,
+        fontSize : 100,
+        justifyContent : "flex-end",
+    }
 
 });
 

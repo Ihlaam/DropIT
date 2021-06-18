@@ -7,11 +7,12 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import colors from "./app/config/colours";
-
+import CustRequestsScreen from "./app/screens/CustRequestsScreen";
 
 const Stack = createStackNavigator();
 
 function App() {
+    
   return(
     <NavigationContainer theme={navigationTheme}>
         <Stack.Navigator
@@ -20,7 +21,7 @@ function App() {
               headerTintColor: colors.secondary,
             }}
         >
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="Welcome" component={WelcomeScreen}  />
           <Stack.Screen name="Requests" component={AppNavigator} options={{headerShown: false}}/>
           <Stack.Screen name="Register" component={RegisterScreen} />
         </Stack.Navigator>

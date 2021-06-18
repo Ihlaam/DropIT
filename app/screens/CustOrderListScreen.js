@@ -24,7 +24,7 @@ const initialRequests = [
   
 ];
 
-function CustOrdersScreen(props) {
+function CustOrderListScreen(props) {
   const [requests, setRequests] = useState(initialRequests);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -66,4 +66,4 @@ function CustOrdersScreen(props) {
 
 const styles = StyleSheet.create({});
 
-export default CustOrdersScreen;
+export default CustOrderListScreen;

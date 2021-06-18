@@ -21,6 +21,8 @@ function CustCreateOrderScreen({route,navigation}) {
     const {pickup,dropoff,vehicle} = route.params;
     const [imageUri, setImageUri] = useState(null);
 
+
+    
     const requestPermission = async () => {
         const {status} = await ImagePicker.requestCameraPermissionsAsync();
           if (status !== 'granted'){
@@ -42,20 +44,25 @@ function CustCreateOrderScreen({route,navigation}) {
         }
     }
 
-    const handleSubmit = async (request) => {
-        // if (!imageUri){
-        //     return alert("Please select an image");
-        // }
-        const result =  await requestApi.addRequest({
-            ...request,
-            ...route.params,
-        })
-        if (!result.ok)
-            return alert ("Could not save the request");
-            alert ("Success");
+    // const handleSubmit = async (request) => {
+    //     // if (!imageUri){
+    //     //     return alert("Please select an image");
+    //     // }
+    //     const result =  await requestApi.addRequest({
+    //         ...request,
+    //         ...route.params,
+    //     })
+    //     if (!result.ok)
+    //         return alert ("Could not save the request");
+    //         alert ("Success");
+    // }
+    
+const handleSubmit = async (values) => {
+        navigation.navigate("Orders",{
+            ...values
+        });
     }
-    
-    
+
     return (
     <Screen>
         <AppForm
@@ -65,7 +72,7 @@ function CustCreateOrderScreen({route,navigation}) {
             <ImageBackground
                 style = {styles.background}
                 resizeMode = "contain"
-                source = {require('../assets/delivery_3.png')}
+                source = {require('../assets/send_gift.png')}
                 >
                 <View style = {styles.dimensionsContainer}>
                             <AppFormField
@@ -86,7 +93,7 @@ function CustCreateOrderScreen({route,navigation}) {
                     {imageUri && <Image source={{ uri: imageUri }} style={{ width: 100, height: 100 }} />}
                 </View>
                 <View styles={styles.buttonContainer}>
-                        <SubmitButton title = "Create New Order" width = "80%" />
+                        <SubmitButton title = "Create New Order" width = "80%" onPress = {() => {navigation.navigate("OrderListScreen")}}/>
                 </View>
             </ImageBackground>
         </AppForm>

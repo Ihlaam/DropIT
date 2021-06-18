@@ -6,7 +6,7 @@ import AppButton from "../components/AppButton";
 import ListItem from "../components/ListItem";
 import colors from "../config/colours";
 
-function CustOrderScreen(props) {
+function CustOrderDetailsScreen(props) {
   return (
     <View>
       <Image style={styles.image} source={require("../assets/package1.jpg")} />
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustOrderScreen;
+export default CustOrderDetailsScreen;

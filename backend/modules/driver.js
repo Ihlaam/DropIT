@@ -9,7 +9,15 @@ const DriverSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    vehicle:{
+    vehicleImage:{
+        type:String,
+        required:true,
+    },
+    vehicleType:{
+        type:String,
+        required:true,
+    },
+    vehicleRegistration:{
         type:String,
         required:true,
     },

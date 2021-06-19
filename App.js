@@ -8,6 +8,10 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import colors from "./app/config/colours";
 import CustRequestsScreen from "./app/screens/CustRequestsScreen";
+import CustQuoteListScreen from "./app/screens/CustQuoteListScreen";
+import CustOrderDetailsScreen from "./app/screens/CustOrderDetailsScreen";
+
+
 
 const Stack = createStackNavigator();
 

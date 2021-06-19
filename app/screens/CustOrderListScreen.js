@@ -24,7 +24,7 @@ const orders = [
   
 ];
 
-function CustOrderListScreen(props) {
+function CustOrderListScreen(navigation) {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -36,7 +36,7 @@ function CustOrderListScreen(props) {
             title1={item.pickup}
             title2={item.dropoff}
             image={item.image}
-            onPress={() => console.log("Message selected", item)}
+            onPress= {() => console.log("Order selected", item)}
           />
         )}
 

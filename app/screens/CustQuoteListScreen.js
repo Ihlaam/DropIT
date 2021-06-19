@@ -10,20 +10,20 @@ import ListItemSeparatorComponent from "../components/ListItemSeparatorComponent
 const initialQuotes = [
   {
     id: 1,
-    name: "Alice",
+    name: "Keenan",
     price: "100",
-    image: require("../assets/driver1.png"),
+    image: require("../assets/driver1.jpg"),
   },
   {
     id: 2,
-    name: "Bob",
+    name: "Stacey",
     price: "200",
-    image: require("../assets/driver1.png"),
+    image: require("../assets/driver2.jpg"),
   },
   
 ];
 
-function CustQuoteListScreen(props) {
+function CustQuoteListScreen(navigation) {
   const [quotes, setQuotes] = useState(initialQuotes);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -41,7 +41,7 @@ function CustQuoteListScreen(props) {
             title={item.name}
             subTitle={"R" + item.price}
             image={item.image}
-            onPress={() => console.log("Message selected", item)}
+            onPress= {() => console.log("Quote selected", item)}
             renderRightActions={() => (
                 <ListItemRejectAction onPress={() => handleReject(item)} /> )} /* if swiped should show more details*/
           />
@@ -53,8 +53,8 @@ function CustQuoteListScreen(props) {
             {
                 id: 2,
                 name: "Bob",
-                price: "R200",
-                image: require("../assets/driver1.png"),
+                price: "200",
+                image: require("../assets/driver1.jpg"),
             },
           ]);
         }}

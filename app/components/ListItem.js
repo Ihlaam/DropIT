@@ -9,7 +9,7 @@ import colours from "../config/colours";
 function ListItem({ title, subTitle, image, IconComponent, onPress, renderRightActions }) {
   return (
     <Swipeable renderRightActions={renderRightActions} friction={2} >
-      <TouchableHighlight underlayColor={colors.accent2} onPress={onPress}>
+      <TouchableHighlight underlayColor={colors.lightgrey} onPress={onPress}>
         <View style={styles.container}>
           {IconComponent}
           {image && <Image style={styles.image} source={image} />}

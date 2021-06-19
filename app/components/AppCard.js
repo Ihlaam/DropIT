@@ -8,7 +8,7 @@ function AppCard({ title1, title2, subtitle, imageUrl, onPress }) {
   return (
     <TouchableHighlight underlayColor={colors.lightgrey} onPress={onPress}>
       <View style={styles.card}>  
-        <Image style={styles.image} source={{ uri: imageUrl }} />
+        <Image style={styles.image} source={{uri: imageUrl}} />
           <View style={styles.detailsContainer}>
               <AppText style={styles.subtitle} numberOfLines={1}>
                 {subtitle}

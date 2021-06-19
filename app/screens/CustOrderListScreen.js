@@ -1,13 +1,11 @@
 //NOTE: List of all customers orders
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import Screen from "../components/Screen";
 import AppCard from "../components/AppCard";
 import colours from "../config/colours";
-import ordersApi from "../api/request";
-import { useEffect, useState } from "react/cjs/react.production.min";
-
+import ordersApi from "../api/orders";
 
 // const orders = [
 //   {
@@ -31,20 +29,13 @@ function CustOrderListScreen(navigation) {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    loadOrders;
-  }, []);
-
+    loadOrders();
+  },[]);
 
   const loadOrders = async () => {
-    const response = await ordersApi.getRequests();
+    const response = await ordersApi.getOrders();
     setOrders(response.data);
   }
-
-  const handleSubmit = async (values) => {
-    navigation.navigate("QuoteList",{
-        ...values
-    });
-}
 
   return (
     <Screen style={styles.screen}>

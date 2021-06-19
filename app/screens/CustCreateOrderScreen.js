@@ -53,13 +53,10 @@ function CustCreateOrderScreen({route,navigation}) {
         if (!result.ok)
             return alert ("Could not save the request");
             alert ("Success");
+
+            navigation.navigate("Orders");
     }
     
-const handleSubmit = async (values) => {
-        navigation.navigate("Orders",{
-            ...values
-        });
-    }
 
     return (
     <Screen>

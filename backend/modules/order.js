@@ -16,9 +16,14 @@ const OrderSchema = new mongoose.Schema(
   {    
     pickup:LocationSchema,
     dropoff:LocationSchema,
-    vehicle:{
+    deliveryDateTime:{
+      type:Date,
+      default:Date.now
+    },
+    image:{
         type:String,
-        required:false}, 
+        required:true,
+    },
     width:{
         type:String,
         required:false},    
@@ -31,6 +36,21 @@ const OrderSchema = new mongoose.Schema(
     date:{
         type:Date,
         default:Date.now
+    },
+    quotes:{
+      type:[{
+        price:{
+          type:Number
+        },
+        date:{
+          type:Date,
+          default:Date.now
+        },
+        driverId:{
+          type:String
+        }
+      }],
+      required:false,
     }
 
     })

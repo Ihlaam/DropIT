@@ -24,9 +24,6 @@ const OrderSchema = new mongoose.Schema(
         type:String,
         required:true,
     },
-    vehicle:{
-        type:String,
-        required:false}, 
     width:{
         type:String,
         required:false},    

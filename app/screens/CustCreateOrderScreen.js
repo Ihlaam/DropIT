@@ -20,7 +20,6 @@ const validationSchema = Yup.object().shape({
 function CustCreateOrderScreen({route,navigation}) {
     const [imageUri, setImageUri] = useState(null);
 
-
     
     const requestPermission = async () => {
         const {status} = await ImagePicker.requestCameraPermissionsAsync();
@@ -43,18 +42,18 @@ function CustCreateOrderScreen({route,navigation}) {
         }
     }
 
-    // const handleSubmit = async (request) => {
-    //     // if (!imageUri){
-    //     //     return alert("Please select an image");
-    //     // }
-    //     const result =  await requestApi.addRequest({
-    //         ...request,
-    //         ...route.params,
-    //     })
-    //     if (!result.ok)
-    //         return alert ("Could not save the request");
-    //         alert ("Success");
-    // }
+    const handleSubmit = async (request) => {
+        // if (!imageUri){
+        //     return alert("Please select an image");
+        // }
+        const result =  await requestApi.addRequest({
+            ...request,
+            ...route.params,
+        })
+        if (!result.ok)
+            return alert ("Could not save the request");
+            alert ("Success");
+    }
     
 const handleSubmit = async (values) => {
         navigation.navigate("Orders",{

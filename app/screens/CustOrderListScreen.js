@@ -5,7 +5,12 @@ import { FlatList, StyleSheet } from "react-native";
 import Screen from "../components/Screen";
 import AppCard from "../components/AppCard";
 import colours from "../config/colours";
-import ordersApi from "../api/orders";
+import ordersApi from "../api/request";
+import AppText from "../components/AppText";
+import AppButton from "../components/AppButton";
+import ActivityIndicator from "../components/ActivityIndicator";
+import useAPI from "../hooks/useAPI";
+
 
 // const orders = [
 //   {
@@ -26,32 +31,34 @@ import ordersApi from "../api/orders";
 // ];
 
 function CustOrderListScreen(navigation) {
-  const [orders, setOrders] = useState([]);
+  const getOrdersApi = useApi(ordersApi.getOrders);
 
   useEffect(() => {
-    loadOrders();
-  },[]);
+    getOrdersApi.request(1, 2, 3);
+  }, []);
 
-  const loadOrders = async () => {
-    const response = await ordersApi.getOrders();
-    setOrders(response.data);
-  }
 
   return (
     <Screen style={styles.screen}>
+      {getOrdersApi.error && (
+        <>
+          <AppText>Could not retrieve the orders</AppText>  
+          <AppButton title="Retry" onPress={getOrdersApi.request} />
+        </>
+      )}
+      <ActivityIndicator visible={getOrdersApi.loading} />
       <FlatList
-        data={orders}
+        data={getOrdersApi.data}
         keyExtractor={order => order.id.toString()}
         renderItem={({ item }) => (
           <AppCard
             subtitle={item.date}
-            title1={item.pickup}
-            title2={item.dropoff}
+            title1={item.pickup.coordinates[0]} //how to make coordinates back into string location name??
+            title2={item.dropoff.coordinates[0]}
             imageUrl={item.image}
-            onPress= {handleSubmit}
+            onPress= {navigation.navigate("QuoteList", item)}
           />
         )}
-
       />
     </Screen>
   );

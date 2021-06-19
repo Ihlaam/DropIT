@@ -2,17 +2,11 @@ const express = require('express');
 const router = express.Router();
 const OrderTemplate = require('../modules/order')
 
-// const upload = multer({
-//     dest: "uploads/",
-//     limits: { fieldSize: 25 * 1024 * 1024 },
-//   });
-
 router.post('/' , (request , response)=> {
-    console.log("========================")
-    console.log(request.body);
 
     const order = new OrderTemplate(
         {  
+            deliveryDateTime:request.body.deliveryDateTime,
             pickup: {
                 type:'Point',
                 coordinates:[
@@ -31,6 +25,7 @@ router.post('/' , (request , response)=> {
             width:request.body.width,
             length:request.body.length,
             height:request.body.height,
+            image:request.body.image,
          })
      
     order.save()

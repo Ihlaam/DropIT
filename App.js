@@ -10,6 +10,7 @@ import colors from "./app/config/colours";
 import CustRequestsScreen from "./app/screens/CustRequestsScreen";
 import CustQuoteListScreen from "./app/screens/CustQuoteListScreen";
 import CustOrderDetailsScreen from "./app/screens/CustOrderDetailsScreen";
+import CustOrderListScreen from "./app/screens/CustOrderListScreen";
 
 
 
@@ -17,20 +18,21 @@ const Stack = createStackNavigator();
 
 function App() {
     
-  return(
-    <NavigationContainer theme={navigationTheme}>
-        <Stack.Navigator
-            screenOptions={{ 
-              headerStyle: { backgroundColor: colors.primary},
-              headerTintColor: colors.secondary,
-            }}
-        >
-          <Stack.Screen name="Welcome" component={WelcomeScreen}  />
-          <Stack.Screen name="Requests" component={AppNavigator} options={{headerShown: false}}/>
-          <Stack.Screen name="Register" component={RegisterScreen} />
-        </Stack.Navigator>
-    </NavigationContainer>
-  );
+  return < CustOrderListScreen />
+  // return(
+  //   <NavigationContainer theme={navigationTheme}>
+  //       <Stack.Navigator
+  //           screenOptions={{ 
+  //             headerStyle: { backgroundColor: colors.primary},
+  //             headerTintColor: colors.secondary,
+  //           }}
+  //       >
+  //         <Stack.Screen name="Welcome" component={WelcomeScreen}  />
+  //         <Stack.Screen name="Requests" component={AppNavigator} options={{headerShown: false}}/>
+  //         <Stack.Screen name="Register" component={RegisterScreen} />
+  //       </Stack.Navigator>
+  //   </NavigationContainer>
+  // );
 }
 
 export default App;

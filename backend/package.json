@@ -4,7 +4,7 @@
   "description": "backend for DropIT",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"cd C:\\Users\\armie\\reactprograms\\DropIT && npm start\"",
+    "start": "npm run server",
     "server": "nodemon server.js"
   },
   "author": "",

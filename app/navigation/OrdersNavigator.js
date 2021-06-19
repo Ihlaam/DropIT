@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import CustOrderListScreen from "../screens/CustOrderListScreen";
+import CustQuoteListScreen from "../screens/CustQuoteListScreen";
 import CustOrderDetailsScreen from "../screens/CustOrderDetailsScreen";
 import CustTrackingScreen from "../screens/CustTrackingScreen";
 
@@ -17,8 +18,10 @@ const OrdersNavigator = () => (
       headerTintColor: colors.secondary,}}
   > 
   <Stack.Screen name="Orders" component={CustOrderListScreen} options={{headerLeft: null}}/> 
-  <Stack.Screen name="OrderDetails" component={CustOrderDetailsScreen} /> 
-  <Stack.Screen name="Track" component={CustTrackingScreen} />
+  <Stack.Screen name="OrderList" component={CustOrderListScreen} options={{headerTitle: "Your Orders"}}/> 
+  <Stack.Screen name="QuoteList" component={CustQuoteListScreen} options={{headerTitle: "Quotes"}}/> 
+  <Stack.Screen name="OrderDetails" component={CustOrderDetailsScreen} options={{headerTitle: "Quote Details"}}/> 
+  <Stack.Screen name="Track" component={CustTrackingScreen} options={{headerTitle: "Track Delivery"}}/>
   </Stack.Navigator>
 );
 

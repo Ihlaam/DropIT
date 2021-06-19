@@ -2,12 +2,9 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 
-
-import navigationTheme from "./navigationTheme";
 import CustRequestsScreen from "../screens/CustRequestsScreen";
 import CustCreateOrderScreen from "../screens/CustCreateOrderScreen";
 import colors from "../config/colours";
-import OrdersNavigator from "./OrdersNavigator";
 import CustOrderListScreen from "../screens/CustOrderListScreen";
 
 //NOTE : Home screen, where user can create a new request 

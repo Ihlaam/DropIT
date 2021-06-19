@@ -1,13 +1,26 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 const OrderTemplate = require('../modules/order')
 
-// const upload = multer({
-//     dest: "uploads/",
-//     limits: { fieldSize: 25 * 1024 * 1024 },
-//   });
 
-router.post('/' , (request , response)=> {
+
+const storage = multer.diskStorage({
+    destination: function(request, file, callback) {
+        callback(null, "../uploads/images");
+    },
+
+     filename: function(request, file, callback) {
+        callback(null, Date.now() + file.originalname);
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    limits: { fieldSize: 3 * 1024 * 1024 },
+  });
+
+router.post('/', upload.single('image'), async (request , response)=> {
     console.log("========================")
     console.log(request.body);
 
@@ -31,9 +44,10 @@ router.post('/' , (request , response)=> {
             width:request.body.width,
             length:request.body.length,
             height:request.body.height,
+            image:request.body.image,
          })
      
-    order.save()
+    await order.save()
     .then(data => {
         response.json(data)
     })

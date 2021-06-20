@@ -54,7 +54,8 @@ function CustCreateOrderScreen({route,navigation}) {
             return alert ("Could not save the request");
             alert ("Success");
 
-            navigation.navigate("Orders");
+        console.log(result)
+            // navigation.navigate("Orders");
     }
     
 

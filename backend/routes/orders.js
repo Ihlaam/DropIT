@@ -16,6 +16,8 @@ router.post('/' , async (request , response) => {
                 request.body.pickup.location.lat,
                 ]
             },
+            pickup_address:request.body.pickup.address,
+            dropoff_address:request.body.dropoff.address,
             dropoff: {
                 type:'Point',
                 coordinates:[

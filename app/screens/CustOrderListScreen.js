@@ -12,25 +12,6 @@ import ActivityIndicator from "../components/ActivityIndicator";
 import useAPI from "../hooks/useAPI";
 import 'datejs';
 
-
-// const orders = [
-//   {
-//     id: 1,
-//     date: "21 June 2021",
-//     pickup: "36 Boundary Road, Houghston Estate, Johannesburg, South Africa",
-//     dropoff: "8 Hillside Road, Parktown, Johannesburg, South Africa",
-//     image: require("../assets/package1.jpg"),
-//   },
-//   {
-//     id: 2,
-//     date: "22 June 2021",
-//     pickup: "120 End Street, Doornfontein, Johannesburg, South Africa",
-//     dropoff: "129 Rivonia Road, Sandown, Sandton, South Africa",
-//     image: require("../assets/package2.jpg"),
-//   },
-  
-// ];
-
 function CustOrderListScreen({navigation}) {
   const getOrdersApi = useAPI(ordersApi.getOrders);
 
@@ -55,8 +36,8 @@ function CustOrderListScreen({navigation}) {
           renderItem={({ item }) => (
             <AppCard
               subtitle={new Date(item.date).toString("HH:mm dd MMM yyyy")}
-              title1={`Pickup: ${item.pickup.coordinates[1]},${item.pickup.coordinates[0]}`}
-              title2={`Dropoff: ${item.dropoff.coordinates[1]},${item.dropoff.coordinates[0]}`}
+              title1={`Pickup: ${item.pickup_address}`}
+              title2={`Dropoff: ${item.dropoff_address}`}
               imageUrl={item.image}
               onPress= {() => navigation.navigate("QuoteList", item)}
             />

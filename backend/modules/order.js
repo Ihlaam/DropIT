@@ -16,13 +16,21 @@ const OrderSchema = new mongoose.Schema(
   {    
     pickup:LocationSchema,
     dropoff:LocationSchema,
+    pickup_address:{
+      type:String,
+      required:false,
+    },
+    dropoff_address:{
+      type:String,
+      required:false,
+    },
     deliveryDateTime:{
       type:Date,
       default:Date.now
     },
     image:{
         type:String,
-        required:true,
+        required:false,
     },
     width:{
         type:String,

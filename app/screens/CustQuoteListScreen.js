@@ -10,7 +10,7 @@ import ListItemSeparatorComponent from "../components/ListItemSeparatorComponent
 function CustQuoteListScreen({route,navigation}) {
   const [quotes, setQuotes] = useState(route.params.quotes);
 
-  const handleReject= (quote) => {
+  const handleReject = (quote) => {
     setQuotes(quotes.filter((r) => r._id !== quote._id));
   };
 
@@ -24,7 +24,7 @@ function CustQuoteListScreen({route,navigation}) {
             title={item.driver.name}
             subTitle={"R" + item.price}
             image={item.driver.image}
-            onPress= {() => navigation.navigate("OrderDetails",{order:route.params,quote:item})}
+            onPress= {() => navigation.navigate("OrderDetails",{order:route.params,quote:item,rejectCallback:handleReject})}
             renderRightActions={() => (
                 <ListItemRejectAction onPress={() => handleReject(item)} /> )} /* if swiped should show more details*/
           />

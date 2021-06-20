@@ -39,7 +39,7 @@ function CustAccountScreen({navigation}) {
         <ListItem
           title="Dobby"
           subTitle="dobby123@gmail.com"
-          image={require("../assets/dobby.jpg")}
+          imageSource={require("../assets/dobby.jpg")}
         />
       </View>
       <View style={styles.container}>
@@ -62,7 +62,7 @@ function CustAccountScreen({navigation}) {
       </View>
       <ListItem
         title="Log Out"
-        onPress={() => navigation.navigate("Track")}
+        onPress={() => navigation.popToTop()}
         IconComponent={<Icon name="logout" backgroundColor = {colours.primary} />}
       />
     </Screen>

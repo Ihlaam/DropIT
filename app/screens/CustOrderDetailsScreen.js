@@ -8,6 +8,15 @@ import colors from "../config/colours";
 import 'datejs';
 
 function CustOrderDetailsScreen({navigation,route}) {
+
+  const handleReject = () => {
+    navigation.pop();
+  }
+
+  const handleAccept = () => {
+    // navigation.navigate("OrderDetails");
+  }
+
   return (
     <View>
       <Image style={styles.image} source={{uri:route.params.quote.driver.vehicleImage}} />
@@ -21,8 +30,8 @@ function CustOrderDetailsScreen({navigation,route}) {
               subTitle={`${route.params.quote.driver.vehicleType} ${route.params.quote.driver.vehicleRegistration}`}
             />
         </View>
-        <AppButton title = "Accept" width = "100%"/>    
-        <AppButton title = "Reject" width = "100%"/>    
+        <AppButton title = "Accept" width = "100%" onPress={handleAccept}/>    
+        <AppButton title = "Reject" width = "100%" onPress={handleReject}/>    
       </View>
     </View>
   );

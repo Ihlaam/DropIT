@@ -22,7 +22,6 @@ const vehicle_types = [
 const validationSchema = Yup.object().shape({
   pickup: Yup.object().required().nullable().label('Pickup Location'),
   dropoff: Yup.object().required().nullable().label("Dropoff Address"),
-  vehicle: Yup.object().required().nullable().label("Vehicle Type"),
   
 });
 
@@ -30,7 +29,6 @@ function CustRequestsScreen({navigation}) {
         //getting access to location
         const [location, setLocation] = useState(null);
         const [errorMsg, setErrorMsg] = useState(null);
-        const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
         const handleSubmit = async (values) => {
             navigation.navigate("CreateOrder",{
@@ -61,7 +59,7 @@ function CustRequestsScreen({navigation}) {
         return (
             <Screen>                
                 <AppForm
-                    initialValues={{ pickup: null, dropoff: null , vehicle: null}}
+                    initialValues={{ pickup: null, dropoff: null}}
                     onSubmit={handleSubmit}
                     validationSchema={validationSchema}>
                 <ImageBackground
@@ -77,12 +75,6 @@ function CustRequestsScreen({navigation}) {
                             label="Dropoff Location"
                             name="dropoff"
                             placeholder="Dropoff Location"/>
-                    </View>
-                    {/* <View style={styles.picker}>
-                        <AppFormPicker items={vehicle_types} name = "vehicle" placeholder = "Vehicle Type" AppFormPicker/>
-                    </View> */}
-                    <View>
-                        <TimePicker />
                     </View>
                     <View styles={styles.buttonContainer}>
                         <SubmitButton title = "Continue" width = "100%" />

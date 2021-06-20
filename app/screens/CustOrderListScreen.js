@@ -10,6 +10,7 @@ import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
 import ActivityIndicator from "../components/ActivityIndicator";
 import useAPI from "../hooks/useAPI";
+import 'datejs';
 
 
 // const orders = [
@@ -30,11 +31,11 @@ import useAPI from "../hooks/useAPI";
   
 // ];
 
-function CustOrderListScreen(navigation) {
-  const getOrdersApi = useApi(ordersApi.getOrders);
+function CustOrderListScreen({navigation}) {
+  const getOrdersApi = useAPI(ordersApi.getOrders);
 
   useEffect(() => {
-    getOrdersApi.request(1, 2, 3);
+    getOrdersApi.request();
   }, []);
 
 
@@ -47,19 +48,21 @@ function CustOrderListScreen(navigation) {
         </>
       )}
       <ActivityIndicator visible={getOrdersApi.loading} />
-      <FlatList
-        data={getOrdersApi.data}
-        keyExtractor={order => order.id.toString()}
-        renderItem={({ item }) => (
-          <AppCard
-            subtitle={item.date}
-            title1={item.pickup.coordinates[0]} //how to make coordinates back into string location name??
-            title2={item.dropoff.coordinates[0]}
-            imageUrl={item.image}
-            onPress= {navigation.navigate("QuoteList", item)}
-          />
-        )}
-      />
+      {getOrdersApi.data && (
+        <FlatList
+          data={getOrdersApi.data}
+          keyExtractor={order => order._id}
+          renderItem={({ item }) => (
+            <AppCard
+              subtitle={new Date(item.date).toString("HH:mm dd MMM yyyy")}
+              title1={`Pickup: ${item.pickup.coordinates[1]},${item.pickup.coordinates[0]}`}
+              title2={`Dropoff: ${item.dropoff.coordinates[1]},${item.dropoff.coordinates[0]}`}
+              imageUrl={item.image}
+              onPress= {() => navigation.navigate("QuoteList", item)}
+            />
+          )}
+        />
+      )}
     </Screen>
   );
 }

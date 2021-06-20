@@ -12,7 +12,7 @@ function ListItem({ title, subTitle, image, IconComponent, onPress, renderRightA
       <TouchableHighlight underlayColor={colors.lightgrey} onPress={onPress}>
         <View style={styles.container}>
           {IconComponent}
-          {image && <Image style={styles.image} source={image} />}
+          {image && <Image style={styles.image} source={{uri:image}} />}
           <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
             {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}

@@ -7,57 +7,29 @@ import ListItem from "../components/ListItem";
 import ListItemRejectAction from "../components/ListItemRejectAction";
 import ListItemSeparatorComponent from "../components/ListItemSeparatorComponent";
 
-const initialQuotes = [
-  {
-    id: 1,
-    name: "Keenan",
-    price: "100",
-    image: require("../assets/driver1.jpg"),
-  },
-  {
-    id: 2,
-    name: "Stacey",
-    price: "200",
-    image: require("../assets/driver2.jpg"),
-  },
-  
-];
-
-function CustQuoteListScreen(navigation) {
-  const [quotes, setQuotes] = useState(initialQuotes);
-  const [refreshing, setRefreshing] = useState(false);
+function CustQuoteListScreen({route,navgation}) {
+  const [quotes, setQuotes] = useState(route.params.quotes);
 
   const handleReject= (quote) => {
-    setQuotes(quotes.filter((r) => r.id !== quote.id));
+    setQuotes(quotes.filter((r) => r._id !== quote._id));
   };
 
   return (
     <Screen>
       <FlatList
         data={quotes}
-        keyExtractor={(quote) => quote.id.toString()}
+        keyExtractor={(quote) => quote._id}
         renderItem={({ item }) => (
           <ListItem
-            title={item.name}
+            title={item.driver.name}
             subTitle={"R" + item.price}
-            image={item.image}
+            image={item.driver.image}
             onPress= {() => console.log("Quote selected", item)}
             renderRightActions={() => (
                 <ListItemRejectAction onPress={() => handleReject(item)} /> )} /* if swiped should show more details*/
           />
         )}
         ItemSeparatorComponent={ListItemSeparatorComponent}
-        refreshing={refreshing}
-        onRefresh={() => {
-          setQuotes([
-            {
-                id: 2,
-                name: "Bob",
-                price: "200",
-                image: require("../assets/driver1.jpg"),
-            },
-          ]);
-        }}
       />
     </Screen>
   );

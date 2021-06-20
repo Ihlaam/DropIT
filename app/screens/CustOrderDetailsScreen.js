@@ -5,19 +5,20 @@ import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
 import ListItem from "../components/ListItem";
 import colors from "../config/colours";
+import 'datejs';
 
-function CustOrderDetailsScreen(navigation) {
+function CustOrderDetailsScreen({navigation,route}) {
   return (
     <View>
-      <Image style={styles.image} source={require("../assets/toyota.jpeg")} />
+      <Image style={styles.image} source={{uri:route.params.quote.driver.vehicleImage}} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Monday 21 June 16:49</AppText>
-        <AppText style={styles.price}>R100</AppText>
+        <AppText style={styles.title}>{new Date(route.params.order.deliveryDateTime).toString("HH:mm dd MMM yyyy")}</AppText>
+        <AppText style={styles.price}>{`R ${route.params.quote.price}`}</AppText>
         <View style={styles.driverContainer}>
             <ListItem
-            image={require("../assets/driver2.jpg")}
-            title="Stacey"
-            subTitle="Toyota Avanza"
+              image={route.params.quote.driver.image}
+              title={route.params.quote.driver.name}
+              subTitle={`${route.params.quote.driver.vehicleType} ${route.params.quote.driver.vehicleRegistration}`}
             />
         </View>
         <AppButton title = "Accept" width = "100%"/>    
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 300,
+    height: 150,
   },
   price: {
     color: colors.accent3,
@@ -42,11 +43,11 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   title: {
-    fontSize: 24,
+    fontSize: 14,
     fontWeight: "500",
   },
   driverContainer: {
-    marginVertical: 40,
+    marginVertical: 10,
   },
 });
 

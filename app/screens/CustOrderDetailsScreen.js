@@ -10,11 +10,12 @@ import 'datejs';
 function CustOrderDetailsScreen({navigation,route}) {
 
   const handleReject = () => {
+    route.params.rejectCallback(route.params.quote);
     navigation.pop();
   }
 
   const handleAccept = () => {
-    // navigation.navigate("OrderDetails");
+    navigation.navigate("Track",route.params);
   }
 
   return (

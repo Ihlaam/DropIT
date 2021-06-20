@@ -9,7 +9,10 @@ export const addRequest = (request) => {
 
 }
 
+const getDriver = (driverId) => client.get(`/driver/${driverId}`);
+
 export default {
   addRequest,
   getOrders,
+  getDriver,
 };

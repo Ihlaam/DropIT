@@ -6,21 +6,13 @@ import MapView from 'react-native-maps';
 import {Marker } from 'react-native-maps';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import ordersApi from "../api/request";
 
-const imageURL='https://i0.wp.com/www.dailycal.org/assets/uploads/2021/04/package_gusler_cc-900x580.jpg';
-const profileImg='https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png';
-
-const destination = {
-    coordinate:{
-        latitude:-33.974763,
-        longitude:25.497774
-    },
-    title:'Dropoff',
-    description:'44 avondale Road',
-}
-
-function CustDeliveryScreen() {
-    const [driverLocation, setDriverLocation] = useState();
+function CustDeliveryScreen({route}) {
+    const [driverLocation, setDriverLocation] = useState({
+        latitude: route.params.quote.driver.location.coordinates[1],
+        longitude: route.params.quote.driver.location.coordinates[0],
+    });
 
     const renderContent = () => (
         <View
@@ -33,23 +25,27 @@ function CustDeliveryScreen() {
                 }}
             >
                 <View style={styles.driver}>
-                    <Image source={{uri:profileImg}} style={styles.driverImage}/>
+                    <Image source={{uri:route.params.quote.driver.image}} style={styles.driverImage}/>
                     <View style={styles.driverInfo}>
                         <Text style={{color:'#4e4e4e',fontSize:10}}>Driver</Text>
-                        <Text>John Doe</Text>
-                        <Text>Honda Civic</Text>
+                        <Text>{route.params.quote.driver.name}</Text>
+                        <Text>{`${route.params.quote.driver.vehicleType} ${route.params.quote.driver.vehicleRegistration}`}</Text>
                     </View>
                 </View>
                 <View style={styles.hr}/>
                 <View style={styles.driver}>
                     <Ionicons style={{padding:2,marginRight:5}} name="location-outline"/>
-                    <Text>44 avondale Road</Text>
+                    <Text>{route.params.order.pickup_address}</Text>
+                </View>
+                <View style={styles.driver}>
+                    <Ionicons style={{padding:2,marginRight:5}} name="location"/>
+                    <Text>{route.params.order.dropoff_address}</Text>
                 </View>
                 <View style={styles.driver}>
                     <Ionicons style={{padding:2,marginRight:5}} name="md-logo-dropbox"/>
-                    <Text>Width: 20cm; Height: 10cm; length: 40cm</Text>
+                    <Text>{`Width: ${route.params.order.width}cm; Height: ${route.params.order.height}cm; length: ${route.params.order.length}cm`}</Text>
                 </View>
-                <Image source={{uri:imageURL}} style={styles.image}/>
+                <Image source={{uri:route.params.order.image}} style={styles.image}/>
             </View>
 
         </View>
@@ -59,12 +55,18 @@ function CustDeliveryScreen() {
     const mapRef = React.useRef(null);
 
     useEffect(() => {
-        let coords = {
-            latitude:-33.976,
-            longitude:25.47,
-        }
-        setDriverLocation(coords);
-        mapRef.current.animateCamera({center:coords,zoom:14})
+        const interval = setInterval(() => {
+            ordersApi.getDriver(route.params.quote.driver._id).then(response => {
+                setDriverLocation({
+                    latitude:response.data.location.coordinates[1],
+                    longitude:response.data.location.coordinates[0],
+                })
+                mapRef.current.animateCamera({center:driverLocation,zoom:8})
+            }).catch(err => {
+                console.log(err);
+            })
+        }, 5000);
+        return () => clearInterval(interval);
     },[]);
 
     return (
@@ -74,24 +76,37 @@ function CustDeliveryScreen() {
                     style={styles.map}
                     ref={mapRef}
                 >
-                    {driverLocation ? <Marker
+                    <Marker
                         key={0}
                         coordinate={driverLocation}
                         title={"Driver"}
-                        image={require('../assets/map_driver.png')}
-                    /> : null}
+                        // image={require('../assets/map_driver.png')}
+                    />
                     <Marker
                         key={1}
-                        coordinate={destination.coordinate}
-                        title={destination.title}
-                        description={destination.description}
-                        image={require('../assets/map_destination.png')}
+                        coordinate={{
+                            latitude:route.params.order.pickup.coordinates[1],
+                            longitude:route.params.order.pickup.coordinates[0],
+                        }}
+                        title={'Pickup'}
+                        description={route.params.order.pickup_address}
+                        // image={require('../assets/map_destination.png')}
+                    />
+                    <Marker
+                        key={2}
+                        coordinate={{
+                            latitude:route.params.order.dropoff.coordinates[1],
+                            longitude:route.params.order.dropoff.coordinates[0],
+                        }}
+                        title={'Dropoff'}
+                        description={route.params.order.dropoff_address}
+                        // image={require('../assets/map_destination.png')}
                     />
                 </MapView>
             </View>
             <BottomSheet
                 ref={sheetRef}
-                initialSnap={1}
+                initialSnap={0}
                 snapPoints={[350, 50]}
                 borderRadius={20}
                 renderContent={renderContent}

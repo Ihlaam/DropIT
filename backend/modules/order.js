@@ -54,8 +54,10 @@ const OrderSchema = new mongoose.Schema(
           type:Date,
           default:Date.now
         },
-        driverId:{
-          type:String
+        driver:{
+          type: mongoose.Schema.Types.ObjectId,
+          required: true,
+          ref: "driverTable"
         }
       }],
       required:false,

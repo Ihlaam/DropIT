@@ -52,10 +52,9 @@ function CustCreateOrderScreen({route,navigation}) {
         })
         if (!result.ok)
             return alert ("Could not save the request");
-            alert ("Success");
-
-        console.log(result)
-            // navigation.navigate("Orders");
+            
+        alert ("Success");
+        navigation.navigate("Orders");
     }
     
 

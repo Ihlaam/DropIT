@@ -46,7 +46,7 @@ router.post('/' , async (request , response) => {
 })
 
 router.get('/', async (request, response) => {
-    OrderTemplate.find().then(orders => {
+    OrderTemplate.find().populate({path:'quotes',populate:'driver'}).then(orders => {
         response.json(orders)
     }).catch(error => {
         response.json(error)
@@ -55,6 +55,7 @@ router.get('/', async (request, response) => {
 
 router.get('/:id', (request, response) => {
     OrderTemplate.findById(mongoose.Types.ObjectId(request.params.id))
+    .populate({path:'quotes',populate:'driver'})
     .then((driver) => {
         response.json(driver);
     })
@@ -76,7 +77,7 @@ const getDummyQuote = async () => {
     let driverId = drivers[Math.floor(Math.random()*drivers.length)];
     return {
         price: Math.round(Math.random()*150*100)/100,
-        driverId,
+        driver: driverId,
     };
 }
 

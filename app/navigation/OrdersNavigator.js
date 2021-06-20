@@ -15,7 +15,8 @@ const OrdersNavigator = () => (
   <Stack.Navigator 
     screenOptions={{ 
       headerStyle: { backgroundColor: colors.primary},
-      headerTintColor: colors.secondary,}}
+      headerTintColor: colors.secondary,
+    }}
   > 
   <Stack.Screen name="Orders" component={CustOrderListScreen} options={{headerLeft: null}}/> 
   <Stack.Screen name="QuoteList" component={CustQuoteListScreen} options={{headerTitle: "Quotes"}}/> 

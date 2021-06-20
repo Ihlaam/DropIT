@@ -13,7 +13,6 @@ import CustOrderDetailsScreen from "./app/screens/CustOrderDetailsScreen";
 import CustOrderListScreen from "./app/screens/CustOrderListScreen";
 
 
-
 const Stack = createStackNavigator();
 
 function App() {

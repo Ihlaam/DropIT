@@ -6,6 +6,7 @@ import CustRequestsScreen from "../screens/CustRequestsScreen";
 import CustCreateOrderScreen from "../screens/CustCreateOrderScreen";
 import colors from "../config/colours";
 import CustOrderListScreen from "../screens/CustOrderListScreen";
+import OrdersNavigator from "./OrdersNavigator";
 
 //NOTE : Home screen, where user can create a new request 
 
@@ -20,7 +21,7 @@ const RequestNavigator = () => (
       > 
       <Stack.Screen name="Requests" component={CustRequestsScreen} options={{headerLeft: null, headerTitle: "Request"}} />
       <Stack.Screen name="CreateOrder" component={CustCreateOrderScreen} options={{headerTitle: "Create Order"}}/>
-      <Stack.Screen name="Orders" component={CustOrderListScreen} options={{headerLeft: null}}/>
+      <Stack.Screen name="Orders" component={OrdersNavigator} options={{headerLeft: null}}/>
       </Stack.Navigator>
 
 );

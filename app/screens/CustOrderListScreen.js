@@ -30,7 +30,7 @@ import useAPI from "../hooks/useAPI";
   
 // ];
 
-function CustOrderListScreen(navigation) {
+function CustOrderListScreen({navigation}) {
   const getOrdersApi = useApi(ordersApi.getOrders);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function CustOrderListScreen(navigation) {
             title1={item.pickup.coordinates[0]} //how to make coordinates back into string location name??
             title2={item.dropoff.coordinates[0]}
             imageUrl={item.image}
-            onPress= {navigation.navigate("QuoteList", item)}
+            onPress={() => navigation.navigate("QuoteList", item)}
           />
         )}
       />

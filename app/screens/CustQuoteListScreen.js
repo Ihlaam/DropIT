@@ -23,7 +23,7 @@ const initialQuotes = [
   
 ];
 
-function CustQuoteListScreen(navigation) {
+function CustQuoteListScreen({navigation}) {
   const [quotes, setQuotes] = useState(initialQuotes);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -41,9 +41,9 @@ function CustQuoteListScreen(navigation) {
             title={item.name}
             subTitle={"R" + item.price}
             image={item.image}
-            onPress= {() => console.log("Quote selected", item)}
+            onPress={() => navigation.navigate("OrderDetails", item)}
             renderRightActions={() => (
-                <ListItemRejectAction onPress={() => handleReject(item)} /> )} /* if swiped should show more details*/
+                <ListItemRejectAction onPress={() => handleReject(item)} /> )} /* if swiped should delete from list*/
           />
         )}
         ItemSeparatorComponent={ListItemSeparatorComponent}

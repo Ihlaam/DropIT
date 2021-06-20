@@ -18,10 +18,11 @@ function CustOrderDetailsScreen(navigation) {
             image={require("../assets/driver2.jpg")}
             title="Stacey"
             subTitle="Toyota Avanza"
+            subTitle2="DD69LCGP"
             />
         </View>
-        <AppButton title = "Accept" width = "100%"/>    
-        <AppButton title = "Reject" width = "100%"/>    
+        <AppButton title = "Accept" width = "100%" onPress = {() => {navigation.navigate("Track")}}/>    
+        <AppButton title = "Reject" width = "100%" onPress = {() => {navigation.navigate("QuoteList")}}/>    
       </View>
     </View>
   );
@@ -36,13 +37,14 @@ const styles = StyleSheet.create({
     height: 300,
   },
   price: {
-    color: colors.accent3,
+    color: colors.primary,
     fontWeight: "bold",
     fontSize: 20,
     marginVertical: 10,
   },
   title: {
     fontSize: 24,
+    color: colors.accent1,
     fontWeight: "500",
   },
   driverContainer: {

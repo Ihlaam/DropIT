@@ -28,9 +28,10 @@ function CustOrderListScreen({navigation}) {
           <AppButton title="Retry" onPress={getOrdersApi.request} />
         </>
       )}
-      <ActivityIndicator visible={getOrdersApi.loading} />
       {getOrdersApi.data && (
         <FlatList
+          onRefresh={() => getOrdersApi.request()}
+          refreshing={getOrdersApi.loading}
           data={getOrdersApi.data}
           keyExtractor={order => order._id}
           renderItem={({ item }) => (

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+//Create Schema for Driver Info
+
 const DriverSchema = new mongoose.Schema({   
     name:{
         type:String,

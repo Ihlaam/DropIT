@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 
-
 import * as Location from 'expo-location';
 
 import Screen from "../components/Screen";

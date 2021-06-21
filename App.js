@@ -17,7 +17,7 @@ import CustOrderListScreen from "./app/screens/CustOrderListScreen";
 const Stack = createStackNavigator();
 
 function App() {
-    
+    //main navigation for application, home page
   return(
     <NavigationContainer theme={navigationTheme}>
         <Stack.Navigator

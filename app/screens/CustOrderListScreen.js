@@ -24,8 +24,11 @@ function CustOrderListScreen({navigation}) {
     <Screen style={styles.screen}>
       {getOrdersApi.error && (
         <>
-          <AppText>Could not retrieve the orders</AppText>  
-          <AppButton title="Retry" onPress={getOrdersApi.request} />
+          <Image>
+                 resizeMode = "center"
+                 source = {require('../assets/fixing_pana.png')}</Image>  
+          <AppText>Could not retrieve orders. Please retry.</AppText>
+          <AppButton styles title="Retry" onPress={getOrdersApi.request} />
         </>
       )}
       {getOrdersApi.data && (

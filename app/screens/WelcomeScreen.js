@@ -6,17 +6,21 @@ import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../component
 import Screen from "../components/Screen";
 import AppButton from '../components/AppButton';
 
+
+//two user types
 const user_types = [
     { label : "Driver", value : 1},
     { label : "Customer", value : 2},
 ];
 
+//validation schema using Yup
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
     user: Yup.object().required().nullable().label("User Type")
   });
   
+
 function WelcomeScreen({navigation}) {
 
     const handleLogin = async (values) => {

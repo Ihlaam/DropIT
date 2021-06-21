@@ -7,6 +7,9 @@ import {Marker } from 'react-native-maps';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import ordersApi from "../api/request";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import colours from '../config/colours';
+
 
 function CustDeliveryScreen({route}) {
     const [driverLocation, setDriverLocation] = useState({
@@ -27,9 +30,10 @@ function CustDeliveryScreen({route}) {
                 <View style={styles.driver}>
                     <Image source={{uri:route.params.quote.driver.image}} style={styles.driverImage}/>
                     <View style={styles.driverInfo}>
-                        <Text style={{color:'#4e4e4e',fontSize:10}}>Driver</Text>
+                        <Text style={{color:colours.accent1, fontWeight: "500", fontSize:13}}>Driver</Text>
                         <Text>{route.params.quote.driver.name}</Text>
-                        <Text>{`${route.params.quote.driver.vehicleType} ${route.params.quote.driver.vehicleRegistration}`}</Text>
+                        <Text>{route.params.quote.driver.vehicleType} </Text>
+                        <Text>{route.params.quote.driver.vehicleRegistration}</Text>
                     </View>
                 </View>
                 <View style={styles.hr}/>
@@ -80,8 +84,9 @@ function CustDeliveryScreen({route}) {
                         key={0}
                         coordinate={driverLocation}
                         title={"Driver"}
-                        // image={require('../assets/map_driver.png')}
-                    />
+                    >
+                        <Image source={require('../assets/map_driver.png')} style={{height: 35, width:35 }} />
+                    </Marker>
                     <Marker
                         key={1}
                         coordinate={{
@@ -90,8 +95,9 @@ function CustDeliveryScreen({route}) {
                         }}
                         title={'Pickup'}
                         description={route.params.order.pickup_address}
-                        // image={require('../assets/map_destination.png')}
-                    />
+                    >
+                        <Image source={require('../assets/location2.png')} style={{height: 35, width:35 }} />
+                    </Marker>
                     <Marker
                         key={2}
                         coordinate={{
@@ -100,8 +106,9 @@ function CustDeliveryScreen({route}) {
                         }}
                         title={'Dropoff'}
                         description={route.params.order.dropoff_address}
-                        // image={require('../assets/map_destination.png')}
-                    />
+                        >
+                        <Image source={require('../assets/location1.png')} style={{height: 35, width:35 }} />
+                    </Marker>
                 </MapView>
             </View>
             <BottomSheet
@@ -137,6 +144,7 @@ const styles = StyleSheet.create({
     },
     driverInfo:{
         margin: 10,
+        color: colours.accent1,
     },
     hr:{
         borderBottomColor: '#efefef',

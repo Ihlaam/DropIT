@@ -53,7 +53,7 @@ function CustCreateOrderScreen({route,navigation}) {
         if (!result.ok)
             return alert ("Could not save the request");
             
-        alert ("Success");
+        alert ("Order Created");
         navigation.navigate("Orders");
     }
     

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+//Schema inside order schema for location coordinates
+
 const LocationSchema = new mongoose.Schema({
   type: {
     type: String,
@@ -11,6 +13,7 @@ const LocationSchema = new mongoose.Schema({
   } 
 })
 
+//Create Schema for Order Info
 
 const OrderSchema = new mongoose.Schema(
   {    

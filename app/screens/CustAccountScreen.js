@@ -36,13 +36,13 @@ function CustAccountScreen({navigation}) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
-        <ListItem
+        <ListItem   //current person logged in
           title="Dobby"
           subTitle="dobby123@gmail.com"
           imageSource={require("../assets/dobby.jpg")}
         />
       </View>
-      <View style={styles.container}>
+      <View style={styles.container}>  
         <FlatList
           data={accountItems}
           keyExtractor={(accountItem) => accountItem.title}

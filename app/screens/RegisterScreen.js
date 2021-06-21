@@ -3,6 +3,8 @@ import {ImageBackground, StyleSheet, View} from 'react-native';
 import Screen from "../components/Screen";
 import AppText from '../components/AppText';
 
+//EXAMPLE: All screens which are in progress will have the following setup. An image and message letting the user know
+
 function RegisterScreen(props) {
     return (
         <Screen>

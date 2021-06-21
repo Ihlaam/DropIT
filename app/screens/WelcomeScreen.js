@@ -39,7 +39,7 @@ function WelcomeScreen({navigation}) {
             <View style = {styles.loginContainer}>
                 <AppForm
                     initialValues={{ user: null, email: "", password: "" }}
-                    onSubmit={handleLogin}
+                    onSubmit={handleLogin} //once form is submitted it should verify login details then redirect them 
                     validationSchema={validationSchema}
                 >
                   <AppFormPicker 

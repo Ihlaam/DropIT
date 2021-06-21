@@ -26,7 +26,7 @@ function CustQuoteListScreen({route,navigation}) {
             image={item.driver.image}
             onPress= {() => navigation.navigate("OrderDetails",{order:route.params,quote:item,rejectCallback:handleReject})}
             renderRightActions={() => (
-                <ListItemRejectAction onPress={() => handleReject(item)} /> )} /* if swiped should show more details*/
+                <ListItemRejectAction onPress={() => handleReject(item)} /> )} /* if swiped should delete from list*/
           />
         )}
         ItemSeparatorComponent={ListItemSeparatorComponent}

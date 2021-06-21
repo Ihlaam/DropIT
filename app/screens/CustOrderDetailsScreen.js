@@ -22,7 +22,7 @@ function CustOrderDetailsScreen({navigation,route}) {
     <View>
       <Image style={styles.image} source={{uri:route.params.quote.driver.vehicleImage}} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{new Date(route.params.order.deliveryDateTime).toString("HH:mm dd MMM yyyy")}</AppText>
+        <AppText style={styles.title}>{new Date(route.params.order.deliveryDateTime).toString("dd MMM yyyy HH:mm")}</AppText>
         <AppText style={styles.price}>{`R ${route.params.quote.price}`}</AppText>
         <View style={styles.driverContainer}>
             <ListItem
@@ -47,14 +47,14 @@ const styles = StyleSheet.create({
     height: 150,
   },
   price: {
-    color: colors.accent3,
-    fontWeight: "bold",
+    color: colors.accent1,
     fontSize: 20,
     marginVertical: 10,
+    fontWeight: "bold",
   },
   title: {
-    fontSize: 14,
-    fontWeight: "500",
+    fontSize: 20,
+    fontWeight: "bold",
   },
   driverContainer: {
     marginVertical: 10,

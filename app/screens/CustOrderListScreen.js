@@ -39,7 +39,7 @@ function CustOrderListScreen({navigation}) {
           keyExtractor={order => order._id}
           renderItem={({ item }) => (
             <AppCard
-              subtitle={new Date(item.date).toString("HH:mm dd MMM yyyy")}
+              subtitle={new Date(item.date).toString("dd MMM yyyy HH:mm ")}
               title1={`Pickup: ${item.pickup_address}`}
               title2={`Dropoff: ${item.dropoff_address}`}
               imageUrl={item.image}

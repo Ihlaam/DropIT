@@ -1,8 +1,6 @@
 //NOTE : Where a customer can create a new order by filling in package details 
-//**Add field for user to upload optional image . does not work currently*/
 import React, { useState, useEffect } from "react";
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
-import {NavigationContainer, useNavigation} from "@react-navigation/native";
 import * as Yup from 'yup';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -10,6 +8,7 @@ import AppButton from "../components/AppButton";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 import Screen from "../components/Screen";
 import requestApi from "../api/request";
+import { NavigationContext } from "@react-navigation/native";
 
 const validationSchema = Yup.object().shape({
     width: Yup.string().required().label("Width"),
@@ -20,7 +19,8 @@ const validationSchema = Yup.object().shape({
 function CustCreateOrderScreen({route,navigation}) {
     const [imageUri, setImageUri] = useState(null);
 
-    
+
+//the app requests permissions to acess the library for optional image uplad    
     const requestPermission = async () => {
         const {status} = await ImagePicker.requestCameraPermissionsAsync();
           if (status !== 'granted'){
@@ -51,7 +51,8 @@ function CustCreateOrderScreen({route,navigation}) {
             ...route.params,
         })
         if (!result.ok)
-            return alert ("Could not save the request");
+        // can make these alerts nicer, more user friendly
+            return alert ("Could not save the request");        
             
         alert ("Order Created");
         navigation.navigate("Orders");

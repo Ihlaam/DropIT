@@ -22,5 +22,5 @@ cron.schedule('*/10 * * * * *', () => {
 });
 
 const getRandomOffset = () => {
-    return (Math.random() < 0.5 ? -1 : 1) * 0.01;
+    return (Math.random() < 0.5 ? -1 : 1) * 0.000001;
 }
